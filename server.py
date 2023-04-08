@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from transformers import pipeline
 from pydantic import BaseModel
 
-from logger import MyLOgger11
+from logger import CustomLogger
 
 
 class Item(BaseModel):
@@ -11,7 +11,7 @@ class Item(BaseModel):
 
 app = FastAPI()
 classifier = pipeline("sentiment-analysis")
-logger = MyLOgger11("./log.txt")
+logger = CustomLogger("./log.txt")
 
 
 @app.get("/")
