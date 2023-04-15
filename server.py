@@ -23,11 +23,11 @@ def root():
 
 @app.post("/predict/")
 def predict(item: Item):
+    ANSWERS.append(classifier(item.text)[0])
     logger.write(
-        f"get root predict, result: {classifier(item.text)[0]}",
+        f"get root predict, result: {ANSWERS[-1]}",
         console=True
         )
-   ANSWERS.append(item.text[0])
    return ANSWERS[-1]
 
 @app.post("/istoriya')
