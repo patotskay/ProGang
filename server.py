@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 from logger import CustomLogger
 
+ANSWERS = []
 
 class Item(BaseModel):
     text: str
@@ -26,4 +27,10 @@ def predict(item: Item):
         f"get root predict, result: {classifier(item.text)[0]}",
         console=True
         )
-    return classifier(item.text)[0]
+   ANSWERS.append(item.text[0])
+   return ANSWERS[-1]
+
+@app.post("/istoriya')
+def get_istoriya(item: Item):
+	logger.write(f"send istoriya", console=True)
+	return {"last_answer": ANSWERS[-1]}
