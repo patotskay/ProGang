@@ -30,6 +30,7 @@ def predict(item: Item):
         )
    return ANSWERS[-1]
 
+
 @app.post("/istoriya')
 def get_istoriya(item: Item):
 	logger.write(f"send istoriya", console=True)
