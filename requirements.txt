@@ -1,5 +1,5 @@
 fastapi==0.95.0
 httpx==0.23.3
-torch==2.0.0+cpu
+torch
 transformers==4.27.4
 uvicorn==0.21.1
