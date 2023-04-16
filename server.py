@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from transformers import pipeline
 from pydantic import BaseModel
-
 from logger import CustomLogger
 
 ANSWERS = []
@@ -28,10 +27,13 @@ def predict(item: Item):
         f"get root predict, result: {ANSWERS[-1]}",
         console=True
         )
-   return ANSWERS[-1]
+    return ANSWERS[-1]
 
 
-@app.post("/istoriya')
-def get_istoriya(item: Item):
-	logger.write(f"send istoriya", console=True)
-	return {"last_answer": ANSWERS[-1]}
+@app.get("/istoriya/")
+def get_istoriya():
+    logger.write("send istoriya", console=True)
+    try:
+        return {"last_answer": ANSWERS[-1]}
+    except:
+        return {"message": "There is no any requests yet"}
